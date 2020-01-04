@@ -11,7 +11,7 @@ import { AboutComponent } from './about/about.component';
     AboutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule
   ],
   providers: [],

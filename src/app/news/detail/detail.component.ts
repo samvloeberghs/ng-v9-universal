@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
 
   public readonly newsDetail$: Observable<NewsDetail> = combineLatest([
     this.activatedRoute.params.pipe(pluck('id')),
-    this.httpClient.get<Array<NewsDetail>>('assets/news.json'),
+    this.httpClient.get<Array<NewsDetail>>('http://localhost:4200/assets/news.json'),
   ]).pipe(
     map(([id, news]) => {
       return news.find((newsDetail => newsDetail.id === +id));
