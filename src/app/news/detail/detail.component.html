@@ -1,3 +1,5 @@
 <p>detail works!</p>
 
-{{newsDetail$ | async | json}}
+<div *ngIf="newsDetail$ | async as newsDetail">
+  {{newsDetail | json}}
+</div>

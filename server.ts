@@ -2,13 +2,11 @@ import 'zone.js/dist/zone-node';
 
 import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
-const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 import * as express from 'express';
 import { join } from 'path';
 import { existsSync } from 'fs';
 
 import { AppServerModule } from './src/main.server';
-// const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/ng-v9-universal/server/main');
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
@@ -20,14 +18,6 @@ export function app() {
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
   }));
-  /*
-  server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModuleNgFactory,
-    providers: [
-      provideModuleMap(LAZY_MODULE_MAP),
-    ],
-  }));
-   */
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -48,7 +38,7 @@ export function app() {
 }
 
 function run() {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 4300;
 
   // Start up the Node server
   const server = app();

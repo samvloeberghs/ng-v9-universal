@@ -14,7 +14,7 @@ import { NewsDetail } from './detail.model';
 export class DetailComponent implements OnInit {
 
   public readonly newsDetail$: Observable<NewsDetail> = combineLatest([
-    this.activatedRoute.params.pipe(pluck('id'), first()),
+    this.activatedRoute.params.pipe(pluck('id')),
     this.httpClient.get<Array<NewsDetail>>('http://localhost:4300/assets/news.json'),
   ]).pipe(
     map(([id, news]) => {
@@ -25,12 +25,9 @@ export class DetailComponent implements OnInit {
   constructor(
     private readonly httpClient: HttpClient,
     private readonly activatedRoute: ActivatedRoute,
-  ) {
-    this.newsDetail$.subscribe(e => console.log(e));
-  }
+  ) {}
 
   ngOnInit() {
-
   }
 
 }
