@@ -1,0 +1,4 @@
+news/1
+news/2
+news/5
+news/99

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable, combineLatest } from 'rxjs';
-import { first, map, pluck } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
 import { NewsDetail } from './detail.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-news-detail',
@@ -15,7 +16,7 @@ export class DetailComponent implements OnInit {
 
   public readonly newsDetail$: Observable<NewsDetail> = combineLatest([
     this.activatedRoute.params.pipe(pluck('id')),
-    this.httpClient.get<Array<NewsDetail>>('http://localhost:4300/assets/news.json'),
+    this.httpClient.get<Array<NewsDetail>>(`${environment.url}/assets/news.json`),
   ]).pipe(
     map(([id, news]) => {
       return news.find((newsDetail => newsDetail.id === +id));

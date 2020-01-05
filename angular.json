@@ -66,8 +66,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-v9-universal:build",
-            "port": "4300"
+            "browserTarget": "ng-v9-universal:build"
           },
           "configurations": {
             "production": {
@@ -162,13 +161,18 @@
           "options": {
             "browserTarget": "ng-v9-universal:build:production",
             "serverTarget": "ng-v9-universal:server:production",
-            "routes": []
+            "routes": [
+              "/news",
+              "/news/1",
+              "/news/2"
+            ]
           },
           "configurations": {
             "production": {}
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ng-v9-universal"
 }
