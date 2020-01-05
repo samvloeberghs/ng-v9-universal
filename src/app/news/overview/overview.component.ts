@@ -11,7 +11,7 @@ import { NewsDetail } from '../detail/detail.model';
 })
 export class OverviewComponent implements OnInit {
 
-  public readonly news$: Observable<Array<NewsDetail>> = this.httpClient.get<Array<NewsDetail>>('http://localhost:4200/assets/news.json');
+  public readonly news$: Observable<Array<NewsDetail>> = this.httpClient.get<Array<NewsDetail>>('http://localhost:4300/assets/news.json');
 
   constructor(
     private readonly httpClient: HttpClient

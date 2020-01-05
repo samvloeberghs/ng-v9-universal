@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ng-v9-universal": {
+      "..": "..",
+      "architect": {
+        "..": "..",
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ng-v9-universal/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "..": ".."
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "ng-v9-universal:build",
+            "serverTarget": "ng-v9-universal:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-v9-universal:build:production",
+              "serverTarget": "ng-v9-universal:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "ng-v9-universal:build:production",
+            "serverTarget": "ng-v9-universal:server:production",
+            "routes": []
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-v9-universal"
+}
